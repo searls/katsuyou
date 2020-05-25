@@ -11,8 +11,13 @@ past_polite: 食べました
 past_negative: 食べなかった
 past_negative_polite: 食べませんでした
 # て
-te: 食べて
-te_negative: 食べなくて
+conjunctive: 食べて
+conjunctive_polite: 食べまして
+conjunctive_negative: 食べなくて
+conjunctive_negative_polite: 食べませんで
+# Provisional
+provisional: 食べれば
+provisional_negative: 食べなければ
 # Volitional
 volitional: 食べよう
 volitional_polite: 食べましょう

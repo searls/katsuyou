@@ -27,9 +27,14 @@ module Katsuyou
         past_polite: stem + ending.past_polite,
         past_negative: stem + ending.past_negative,
         past_negative_polite: stem + ending.past_negative_polite,
-        # て
-        te: stem + ending.te,
-        te_negative: stem + ending.te_negative,
+        # Conjunctive
+        conjunctive: stem + ending.conjunctive,
+        conjunctive_polite: stem + ending.conjunctive_polite,
+        conjunctive_negative: stem + ending.conjunctive_negative,
+        conjunctive_negative_polite: stem + ending.conjunctive_negative_polite,
+        # Provisional
+        provisional: stem + ending.provisional,
+        provisional_negative: stem + ending.provisional_negative,
         # Volitional
         volitional: stem + ending.volitional,
         volitional_polite: stem + ending.volitional_polite,

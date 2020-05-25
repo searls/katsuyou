@@ -11,8 +11,8 @@ past_polite: 買いました
 past_negative: 買わなかった
 past_negative_polite: 買いませんでした
 # て
-te: 買って
-te_negative: 買わなくて
+conjunctive: 買って
+conjunctive_negative: 買わなくて
 # Volitional
 volitional: 買おう
 volitional_polite: 買いましょう

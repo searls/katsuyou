@@ -11,8 +11,8 @@ past_polite: 呉れました
 past_negative: 呉れなかった
 past_negative_polite: 呉れませんでした
 # て
-te: 呉れて
-te_negative: 呉れなくて
+conjunctive: 呉れて
+conjunctive_negative: 呉れなくて
 # Volitional
 volitional: 呉れよう
 volitional_polite: 呉れましょう

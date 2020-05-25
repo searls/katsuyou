@@ -11,8 +11,8 @@ past_polite: 話しました
 past_negative: 話さなかった
 past_negative_polite: 話しませんでした
 # て
-te: 話して
-te_negative: 話さなくて
+conjunctive: 話して
+conjunctive_negative: 話さなくて
 # Volitional
 volitional: 話そう
 volitional_polite: 話しましょう

@@ -11,9 +11,14 @@ module Katsuyou
     :past_polite,
     :past_negative,
     :past_negative_polite,
-    # て
-    :te,
-    :te_negative,
+    # Conjunctive
+    :conjunctive,
+    :conjunctive_polite,
+    :conjunctive_negative,
+    :conjunctive_negative_polite,
+    # Provisional
+    :provisional,
+    :provisional_negative,
     # Volitional
     :volitional,
     :volitional_polite,

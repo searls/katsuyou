@@ -30,12 +30,28 @@ module Katsuyou
       "#{to_い}ませんでした"
     end
 
-    def te
+    def conjunctive
       TAIL_FORMS[code][:connector] + TAIL_FORMS[code][:て]
     end
 
-    def te_negative
+    def conjunctive_polite
+      "#{to_い}まして"
+    end
+
+    def conjunctive_negative
       "#{to_あ}なくて"
+    end
+
+    def conjunctive_negative_polite
+      "#{to_い}ませんで"
+    end
+
+    def provisional
+      "#{to_え}ば"
+    end
+
+    def provisional_negative
+      "#{to_あ}なければ"
     end
 
     def volitional

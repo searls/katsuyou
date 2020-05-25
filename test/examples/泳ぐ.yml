@@ -11,8 +11,8 @@ past_polite: 泳ぎました
 past_negative: 泳がなかった
 past_negative_polite: 泳ぎませんでした
 # て
-te: 泳いで
-te_negative: 泳がなくて
+conjunctive: 泳いで
+conjunctive_negative: 泳がなくて
 # Volitional
 volitional: 泳ごう
 volitional_polite: 泳ぎましょう

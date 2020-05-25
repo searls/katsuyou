@@ -30,12 +30,28 @@ module Katsuyou
       "ませんでした"
     end
 
-    def te
+    def conjunctive
       "て"
     end
 
-    def te_negative
+    def conjunctive_polite
+      "まして"
+    end
+
+    def conjunctive_negative
       "なくて"
+    end
+
+    def conjunctive_negative_polite
+      "ませんで"
+    end
+
+    def provisional
+      "れば"
+    end
+
+    def provisional_negative
+      "なければ"
     end
 
     def volitional

@@ -11,8 +11,13 @@ past_polite: 飛びました
 past_negative: 飛ばなかった
 past_negative_polite: 飛びませんでした
 # て
-te: 飛んで
-te_negative: 飛ばなくて
+conjunctive: 飛んで
+conjunctive_negative: 飛ばなくて
+conjunctive_polite: 飛びまして
+conjunctive_negative_polite: 飛びませんで
+# Provisional
+provisional: 飛べば
+provisional_negative: 飛ばなければ
 # Volitional
 volitional: 飛ぼう
 volitional_polite: 飛びましょう

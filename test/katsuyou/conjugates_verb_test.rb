@@ -25,8 +25,13 @@ module Katsuyou
       assert_equal "沸かなかった", result.past_negative
       assert_equal "沸きませんでした", result.past_negative_polite
 
-      assert_equal "沸いて", result.te
-      assert_equal "沸かなくて", result.te_negative
+      assert_equal "沸いて", result.conjunctive
+      assert_equal "沸きまして", result.conjunctive_polite
+      assert_equal "沸かなくて", result.conjunctive_negative
+      assert_equal "沸きませんで", result.conjunctive_negative_polite
+
+      assert_equal "沸けば", result.provisional
+      assert_equal "沸かなければ", result.provisional_negative
 
       assert_equal "沸こう", result.volitional
       assert_equal "沸きましょう", result.volitional_polite

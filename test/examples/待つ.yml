@@ -11,8 +11,8 @@ past_polite: 待ちました
 past_negative: 待たなかった
 past_negative_polite: 待ちませんでした
 # て
-te: 待って
-te_negative: 待たなくて
+conjunctive: 待って
+conjunctive_negative: 待たなくて
 # Volitional
 volitional: 待とう
 volitional_polite: 待ちましょう

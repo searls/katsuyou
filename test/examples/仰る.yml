@@ -11,8 +11,8 @@ past_polite: 仰いました
 past_negative: 仰らなかった
 past_negative_polite: 仰いませんでした
 # て
-te: 仰って
-te_negative: 仰らなくて
+conjunctive: 仰って
+conjunctive_negative: 仰らなくて
 # Volitional
 volitional: 仰ろう
 volitional_polite: 仰いましょう

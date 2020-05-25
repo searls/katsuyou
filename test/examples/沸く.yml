@@ -11,8 +11,8 @@ past_polite: 沸きました
 past_negative: 沸かなかった
 past_negative_polite: 沸きませんでした
 # て
-te: 沸いて
-te_negative: 沸かなくて
+conjunctive: 沸いて
+conjunctive_negative: 沸かなくて
 # Volitional
 volitional: 沸こう
 volitional_polite: 沸きましょう

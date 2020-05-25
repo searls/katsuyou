@@ -11,8 +11,8 @@ past_polite: 取りました
 past_negative: 取らなかった
 past_negative_polite: 取りませんでした
 # て
-te: 取って
-te_negative: 取らなくて
+conjunctive: 取って
+conjunctive_negative: 取らなくて
 # Volitional
 volitional: 取ろう
 volitional_polite: 取りましょう

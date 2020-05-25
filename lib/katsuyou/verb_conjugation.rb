@@ -1,5 +1,6 @@
 module Katsuyou
   class VerbConjugation < Struct.new(
+    :conjugation_type,
     # Present
     :present,
     :present_polite,

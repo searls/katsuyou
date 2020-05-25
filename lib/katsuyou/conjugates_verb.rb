@@ -1,11 +1,18 @@
+require_relative "determines_type"
 require_relative "verb_conjugation"
 require_relative "verb_ending"
 
 module Katsuyou
   class ConjugatesVerb
+    def initialize
+      @determines_type = DeterminesType.new
+    end
+
     def call(verb, type:)
-      stem, tail = split(verb, type)
-      ending = VerbEnding.for(type, tail: tail)
+      stem, tail = split(verb)
+      conjugation_type = @determines_type.call(text: verb, type: type)
+
+      ending = VerbEnding.for(conjugation_type, tail: tail)
 
       VerbConjugation.new(
         # Present
@@ -52,7 +59,7 @@ module Katsuyou
 
     private
 
-    def split(verb, type)
+    def split(verb)
       [verb[0...-1], verb[-1]]
     end
   end

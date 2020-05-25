@@ -71,7 +71,7 @@ module Katsuyou
       assert_equal "Conjugation type 'v5uru' is not yet supported", error.message
     end
 
-    Dir["test/examples/*.yml"].each do |file|
+    Dir["test/examples/*.yml"].sort.each do |file|
       define_method "test_#{File.basename(file, ".*")}" do
         example = YAML.load_file(file)
         text = example.delete("text")

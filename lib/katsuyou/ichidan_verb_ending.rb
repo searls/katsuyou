@@ -47,7 +47,11 @@ module Katsuyou
     end
 
     def imperative
-      "ろ"
+      if @type.code == "v1-s"
+        ""
+      else
+        "ろ"
+      end
     end
 
     def potential

@@ -3,9 +3,11 @@ require "katsuyou"
 require "gimme"
 
 require "minitest/autorun"
+require "minitest/hooks/test"
 
 class UnitTest < Minitest::Test
   include Gimme::DSL
+  include Minitest::Hooks
 
   def teardown
     Gimme.reset

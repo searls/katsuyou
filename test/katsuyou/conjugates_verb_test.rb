@@ -7,6 +7,10 @@ module Katsuyou
       @subject = ConjugatesVerb.new
     end
 
+    def before_all
+      @tested_conjugation_types = []
+    end
+
     def test_waku
       result = @subject.call("沸く", type: :godan_verb)
 
@@ -74,10 +78,23 @@ module Katsuyou
         type = example.delete("type")
 
         result = Katsuyou.conjugate(text, type: type)
+        @tested_conjugation_types << result.conjugation_type
 
         example.each do |(property, expected)|
           assert_equal expected, result.send(property)
         end
+      end
+    end
+
+    def after_all
+      untested_conjugation_types = CONJUGATION_TYPES.select(&:supported) - @tested_conjugation_types
+      unless untested_conjugation_types.empty?
+        warn <<~WARN
+
+          Uh oh! You didn't test the following purportedly-supported conjugation types!"
+
+          #{untested_conjugation_types.map { |t| "  • #{t.code}" }.join("\n")}
+        WARN
       end
     end
   end

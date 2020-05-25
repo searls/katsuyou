@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Justin Searls"]
   spec.email = ["searls@gmail.com"]
 
-  spec.summary = "Conjugates Japanese verbs"
+  spec.summary = "Conjugates Japanese words"
   spec.homepage = "https://github.com/searls/katsuyou"
   spec.license = "GPL-3.0-only"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")

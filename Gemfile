@@ -5,6 +5,7 @@ gemspec
 
 gem "rake"
 gem "minitest"
+gem "minitest-hooks"
 gem "standard"
 gem "gimme"
 gem "pry"

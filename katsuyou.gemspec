@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Conjugates Japanese verbs"
   spec.homepage = "https://github.com/searls/katsuyou"
-  spec.license = "MIT"
+  spec.license = "GPL-3.0-only"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   spec.metadata["homepage_uri"] = spec.homepage

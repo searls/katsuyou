@@ -9,10 +9,10 @@ module Katsuyou
     end
 
     def call(verb, type:)
-      stem, tail = split(verb)
       conjugation_type = @determines_type.call(text: verb, type: type)
 
-      ending = VerbEnding.for(conjugation_type, tail: tail)
+      stem = verb[0...-1]
+      ending = VerbEnding.for(conjugation_type)
 
       VerbConjugation.new(
         # Present
@@ -55,12 +55,6 @@ module Katsuyou
         causative_passive_negative: stem + ending.causative_passive_negative,
         causative_passive_negative_polite: stem + ending.causative_passive_negative_polite
       )
-    end
-
-    private
-
-    def split(verb)
-      [verb[0...-1], verb[-1]]
     end
   end
 end

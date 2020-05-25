@@ -2,10 +2,6 @@ require_relative "verb_ending"
 
 module Katsuyou
   class GodanVerbEnding < VerbEnding
-    def initialize(tail)
-      @tail = tail
-    end
-
     def present_polite
       "#{to_い}ます"
     end
@@ -19,7 +15,7 @@ module Katsuyou
     end
 
     def past
-      TAIL_FORMS[@tail][:connector] + TAIL_FORMS[@tail][:た]
+      TAIL_FORMS[code][:connector] + TAIL_FORMS[code][:た]
     end
 
     def past_polite
@@ -35,7 +31,7 @@ module Katsuyou
     end
 
     def te
-      TAIL_FORMS[@tail][:connector] + TAIL_FORMS[@tail][:て]
+      TAIL_FORMS[code][:connector] + TAIL_FORMS[code][:て]
     end
 
     def te_negative
@@ -120,24 +116,28 @@ module Katsuyou
 
     private
 
+    def code
+      @type.code
+    end
+
     def to_い
-      TAIL_FORMS[@tail][:い]
+      TAIL_FORMS[code][:い]
     end
 
     def to_あ
-      TAIL_FORMS[@tail][:あ]
+      TAIL_FORMS[code][:あ]
     end
 
     def to_え
-      TAIL_FORMS[@tail][:え]
+      TAIL_FORMS[code][:え]
     end
 
     def to_お
-      TAIL_FORMS[@tail][:お]
+      TAIL_FORMS[code][:お]
     end
 
     TAIL_FORMS = {
-      "う" => {
+      "v5u" => {
         い: "い",
         あ: "わ",
         え: "え",
@@ -146,7 +146,7 @@ module Katsuyou
         た: "た",
         て: "て"
       },
-      "く" => {
+      "v5k" => {
         い: "き",
         あ: "か",
         え: "け",
@@ -155,7 +155,7 @@ module Katsuyou
         た: "た",
         て: "て"
       },
-      "ぐ" => {
+      "v5g" => {
         い: "ぎ",
         あ: "が",
         え: "げ",
@@ -164,7 +164,7 @@ module Katsuyou
         た: "だ",
         て: "で"
       },
-      "す" => {
+      "v5s" => {
         い: "し",
         あ: "さ",
         え: "せ",
@@ -173,7 +173,7 @@ module Katsuyou
         た: "た",
         て: "て"
       },
-      "つ" => {
+      "v5t" => {
         い: "ち",
         あ: "た",
         え: "て",
@@ -182,7 +182,7 @@ module Katsuyou
         た: "た",
         て: "て"
       },
-      "る" => {
+      "v5r" => {
         い: "り",
         あ: "ら",
         え: "れ",

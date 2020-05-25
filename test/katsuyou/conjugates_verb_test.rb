@@ -80,8 +80,8 @@ module Katsuyou
         result = Katsuyou.conjugate(text, type: type)
         @tested_conjugation_types << result.conjugation_type
 
-        example.each do |(property, expected)|
-          assert_equal expected, result.send(property)
+        example.each.with_index do |(property, expected), i|
+          assert_equal expected, result.send(property), "Conjugation ##{property} (##{i}) failed"
         end
       end
     end
@@ -91,7 +91,7 @@ module Katsuyou
       unless untested_conjugation_types.empty?
         warn <<~WARN
 
-          Uh oh! You didn't test the following purportedly-supported conjugation types!"
+          Uh oh! You didn't test the following supported conjugations!
 
           #{untested_conjugation_types.map { |t| "  • #{t.code}" }.join("\n")}
         WARN

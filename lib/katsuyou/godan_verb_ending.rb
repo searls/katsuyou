@@ -47,7 +47,11 @@ module Katsuyou
     end
 
     def imperative
-      to_え
+      if @type.code == "v5aru"
+        to_い
+      else
+        to_え
+      end
     end
 
     def potential
@@ -137,21 +141,12 @@ module Katsuyou
     end
 
     TAIL_FORMS = {
-      "v5u" => {
+      "v5aru" => {
         い: "い",
-        あ: "わ",
-        え: "え",
-        お: "お",
+        あ: "ら",
+        え: "れ",
+        お: "ろ",
         connector: "っ",
-        た: "た",
-        て: "て"
-      },
-      "v5k" => {
-        い: "き",
-        あ: "か",
-        え: "け",
-        お: "こ",
-        connector: "い",
         た: "た",
         て: "て"
       },
@@ -163,6 +158,15 @@ module Katsuyou
         connector: "い",
         た: "だ",
         て: "で"
+      },
+      "v5k" => {
+        い: "き",
+        あ: "か",
+        え: "け",
+        お: "こ",
+        connector: "い",
+        た: "た",
+        て: "て"
       },
       "v5s" => {
         い: "し",
@@ -178,6 +182,15 @@ module Katsuyou
         あ: "た",
         え: "て",
         お: "と",
+        connector: "っ",
+        た: "た",
+        て: "て"
+      },
+      "v5u" => {
+        い: "い",
+        あ: "わ",
+        え: "え",
+        お: "お",
         connector: "っ",
         た: "た",
         て: "て"

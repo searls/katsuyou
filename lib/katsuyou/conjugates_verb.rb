@@ -10,11 +10,13 @@ module Katsuyou
 
     def call(verb, type:)
       conjugation_type = @determines_type.call(text: verb, type: type)
+      ensure_valid_conjugation_type!(type, conjugation_type)
 
       stem = verb[0...-1]
       ending = VerbEnding.for(conjugation_type)
 
       VerbConjugation.new(
+        conjugation_type: conjugation_type,
         # Present
         present: verb,
         present_polite: stem + ending.present_polite,
@@ -55,6 +57,20 @@ module Katsuyou
         causative_passive_negative: stem + ending.causative_passive_negative,
         causative_passive_negative_polite: stem + ending.causative_passive_negative_polite
       )
+    end
+
+    private
+
+    def ensure_valid_conjugation_type!(user_type, conjugation_type)
+      if conjugation_type.nil?
+        raise InvalidConjugationTypeError.new(
+          "We don't know about conjugation type '#{user_type}'"
+        )
+      elsif !conjugation_type.supported
+        raise UnsupportedConjugationTypeError.new(
+          "Conjugation type '#{conjugation_type.code}' is not yet supported"
+        )
+      end
     end
   end
 end

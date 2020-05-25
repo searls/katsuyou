@@ -10,6 +10,7 @@ module Katsuyou
     def test_waku
       result = @subject.call("沸く", type: :godan_verb)
 
+      assert_equal DeterminesType.type_for("v5k"), result.conjugation_type
       assert_equal "沸く", result.present
       assert_equal "沸きます", result.present_polite
       assert_equal "沸かない", result.present_negative
@@ -48,6 +49,22 @@ module Katsuyou
       assert_equal "沸かせられます", result.causative_passive_polite
       assert_equal "沸かせられない", result.causative_passive_negative
       assert_equal "沸かせられません", result.causative_passive_negative_polite
+    end
+
+    def test_raises_for_invalid_types
+      error = assert_raises(InvalidConjugationTypeError) {
+        @subject.call("バカ", type: "nonsense")
+      }
+
+      assert_equal "We don't know about conjugation type 'nonsense'", error.message
+    end
+
+    def test_raises_for_unsupported_types
+      error = assert_raises(UnsupportedConjugationTypeError) {
+        @subject.call("bleep bloop", type: "v5uru")
+      }
+
+      assert_equal "Conjugation type 'v5uru' is not yet supported", error.message
     end
 
     Dir["test/examples/*.yml"].each do |file|

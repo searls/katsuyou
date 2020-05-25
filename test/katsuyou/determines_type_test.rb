@@ -29,6 +29,7 @@ module Katsuyou
     def test_guess_godan_verbs
       assert_equal "v5b", @subject.call(text: "飛ぶ", type: :godan_verb).code
       assert_equal "v5g", @subject.call(text: "泳ぐ", type: :godan_verb).code
+      assert_equal "v5k-s", @subject.call(text: "あの世に行く", type: :godan_verb).code
       assert_equal "v5k", @subject.call(text: "書く", type: :godan_verb).code
       assert_equal "v5m", @subject.call(text: "住む", type: :godan_verb).code
       assert_equal "v5n", @subject.call(text: "死ぬ", type: :godan_verb).code

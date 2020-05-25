@@ -57,16 +57,20 @@ module Katsuyou
     private
 
     def guess_godan_type(text)
-      case text[-1]
-      when "ぶ" then type_for("v5b")
-      when "ぐ" then type_for("v5g")
-      when "く" then type_for("v5k")
-      when "む" then type_for("v5m")
-      when "ぬ" then type_for("v5n")
-      when "る" then type_for("v5r")
-      when "す" then type_for("v5s")
-      when "つ" then type_for("v5t")
-      when "う" then type_for("v5u")
+      if text.end_with?("行く")
+        type_for("v5k-s")
+      else
+        case text[-1]
+        when "ぶ" then type_for("v5b")
+        when "ぐ" then type_for("v5g")
+        when "く" then type_for("v5k")
+        when "む" then type_for("v5m")
+        when "ぬ" then type_for("v5n")
+        when "る" then type_for("v5r")
+        when "す" then type_for("v5s")
+        when "つ" then type_for("v5t")
+        when "う" then type_for("v5u")
+        end
       end
     end
 

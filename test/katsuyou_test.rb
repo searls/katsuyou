@@ -11,6 +11,6 @@ class KatsuyouTest < UnitTest
 
     result = Katsuyou.conjugate("thing", type: "lol")
 
-    assert_equal result, "some conjugations"
+    assert_equal "some conjugations", result
   end
 end

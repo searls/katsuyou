@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    katsuyou (0.1.0)
+    katsuyou (1.0.0)
 
 GEM
   remote: https://rubygems.org/

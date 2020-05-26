@@ -1,6 +1,18 @@
-# Katsuyou / 活用 (Conjugation)
+# Katsuyou / 活用 (lit. "Conjugation")
+
+An API for conjugating Japanese words
+
+## Installation
+
+Stick this in your Gemfile and 吸う it:
+
+```
+gem "katsuyou"
+```
 
 ## Usage
+
+### `Katsuyou.conjugate(word, type:)`
 
 This gem generates conjugations for ichidan ("る") and godan ("う") verbs, as
 well as the two notable exceptions in suru (する) and kuru (来る). Other verbs
@@ -12,10 +24,11 @@ them.
 ``` ruby
 Katsuyou.conjugate("食べる", type: :ichidan_verb)
 Katsuyou.conjugate("聞く", type: :godan_verb)
+Katsuyou.conjugate("学ぶ", type: "v5b")
 
 # Our special cases
 Katsuyou.conjugate("する", type: :suru_verb)
-Katsuyou.conjugate("勉強する", type: :suru_verb)
+Katsuyou.conjugate("勉強", type: :suru_verb)
 Katsuyou.conjugate("来る", type: :kuru_verb)
 ```
 
@@ -73,10 +86,90 @@ conjugations = Katsuyou.conjugate("見せる", type: :ichidan_verb)
 #   causative_passive_negative_polite="見せさせられません">
 ```
 
-## Installation
+### `Katsuyou.conjugatable?(word, type:)`
 
-Stick this in your Gemfile and 吸う it:
+If you're not sure whether a particular word & type is supported, you can ask
+first with `conjugatable?` (note that `conjugate()` will raise if a conjugation
+type is unsupported or unknown)
 
 ```
-gem "katsuyou"
+Katsuyou.conjugatable?("食べる", type: :ichidan_verb) # => true
+Katsuyou.conjugatable?("買う", type: "v5u") # => true
+Katsuyou.conjugatable?("食", type: :ichidan_verb) # => false, all ichidan verbs end in る
+Katsuyou.conjugatable?("ぷす", type: "v9s") # => false, unknown type "v9s"
+```
+
+### Conjugation types
+
+The `conjugate(text, type:)` method **requires** you to supply a `type` value.
+There are two categories of values that the gem accepts.
+
+#### General conjugation types
+
+First, as illustarted at the outset, these _general_ conjugation types are
+supported:
+
+* `ichidan_verb` (e.g. 食べる)
+* `godan_verb` (e.g. 買う)
+* `kuru_verb` (e.g. 来る)
+* `suru_verb` (namely, する but also nouns that can take する like 勉強)
+
+If you provide one of the above conjugation types, the gem will attempt to
+translate it to a more specific conjugation form, which are identified by the
+same codes as listed under conjugate-able entries' parts of speech in
+[JMDict/EDICT](http://www.edrdg.org/jmdict/edict_doc.html).
+
+#### Specific conjugation codes
+
+As a result of the preceding, if you're passing in values from a JMDict-based
+dictionary, it probably makes more sense to pass the specific code (e.g.
+`Katsuyou.conjugate("請う", type: "v5u-s")`) to ensure that you get the most
+accurate results.
+
+You can find codes the gem knows about in `Katsuyou::CONJUGATION_TYPES`.
+
+For example to see the supported conjugation types:
+
+```ruby
+puts Katsuyou::CONJUGATION_TYPES.select(&:supported).map { |type| "#  • #{type.code}" }.join("\n")
+#  • v1
+#  • v1-s
+#  • v5aru
+#  • v5b
+#  • v5g
+#  • v5k
+#  • v5k-s
+#  • v5m
+#  • v5n
+#  • v5r
+#  • v5r-i
+#  • v5s
+#  • v5t
+#  • v5u
+#  • v5u-s
+#  • vk
+#  • vs
+#  • vs-s
+#  • vs-i
+```
+
+And likewise, for the known-but-unsupported ones:
+
+```ruby
+puts Katsuyou::CONJUGATION_TYPES.reject(&:supported).map { |type| "#  • #{type.code}" }.join("\n")
+#  • adj-i
+#  • adj-na
+#  • adj-t
+#  • adv-to
+#  • aux
+#  • aux-v
+#  • aux-adj
+#  • v2a-s
+#  • v4h
+#  • v4r
+#  • v5uru
+#  • vz
+#  • vn
+#  • vr
+#  • vs-c
 ```

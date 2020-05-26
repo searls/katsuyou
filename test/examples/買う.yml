@@ -12,7 +12,12 @@ past_negative: 買わなかった
 past_negative_polite: 買いませんでした
 # て
 conjunctive: 買って
+conjunctive_polite: 買いまして
 conjunctive_negative: 買わなくて
+conjunctive_negative_polite: 買いませんで
+# Provisional
+provisional: 買えば
+provisional_negative: 買わなければ
 # Volitional
 volitional: 買おう
 volitional_polite: 買いましょう

@@ -13,4 +13,13 @@ class KatsuyouTest < UnitTest
 
     assert_equal "some conjugations", result
   end
+
+  def test_conjugatable_calls_class
+    checks_conjugability = gimme_next(Katsuyou::ChecksConjugability)
+    give(checks_conjugability).call("thing", type: "lol") { "a result" }
+
+    result = Katsuyou.conjugatable?("thing", type: "lol")
+
+    assert_equal "a result", result
+  end
 end

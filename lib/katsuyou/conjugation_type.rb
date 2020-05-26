@@ -4,5 +4,9 @@ module Katsuyou
       @supported = supported
       super
     end
+
+    def supported?
+      @supported
+    end
   end
 end

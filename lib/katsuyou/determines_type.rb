@@ -1,4 +1,5 @@
 require_relative "conjugation_type"
+require_relative "verb_ending"
 
 module Katsuyou
   CONJUGATION_TYPES = [
@@ -28,7 +29,7 @@ module Katsuyou
     ConjugationType.new(code: "v5u", description: "Godan verb with `u' ending", category: :godan_verb, supported: true),
     ConjugationType.new(code: "v5u-s", description: "Godan verb with `u' ending (special class)", category: :godan_verb, supported: true),
     ConjugationType.new(code: "v5uru", description: "Godan verb - Uru old class verb (old form of Eru)", category: :godan_verb, supported: false),
-    ConjugationType.new(code: "vz", description: "Ichidan verb - zuru verb (alternative form of -jiru verbs)", category: :ichidan_verb, supported: true),
+    ConjugationType.new(code: "vz", description: "Ichidan verb - zuru verb (alternative form of -jiru verbs)", category: :ichidan_verb, supported: false),
     ConjugationType.new(code: "vk", description: "Kuru verb - special class", category: :kuru_verb, supported: true),
     ConjugationType.new(code: "vn", description: "irregular nu verb", category: :other_verb, supported: false),
     ConjugationType.new(code: "vr", description: "irregular ru verb, plain form ends with -ri", category: :other_verb, supported: false),
@@ -49,6 +50,10 @@ module Katsuyou
         type_for("v1")
       elsif type == "godan_verb"
         guess_godan_type(text)
+      elsif type == "kuru_verb"
+        type_for("vk")
+      elsif type == "suru_verb"
+        guess_suru_type(text)
       else
         type_for(type)
       end
@@ -57,8 +62,10 @@ module Katsuyou
     private
 
     def guess_godan_type(text)
-      if text.end_with?("行く")
+      if text.end_with?("行く", "いく")
         type_for("v5k-s")
+      elsif text.end_with?("有る", "ある")
+        type_for("v5r-i")
       else
         case text[-1]
         when "ぶ" then type_for("v5b")
@@ -71,6 +78,14 @@ module Katsuyou
         when "つ" then type_for("v5t")
         when "う" then type_for("v5u")
         end
+      end
+    end
+
+    def guess_suru_type(text)
+      if text.end_with?("為る", "する")
+        type_for("vs-i")
+      else
+        type_for("vs")
       end
     end
 

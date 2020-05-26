@@ -7,7 +7,11 @@ module Katsuyou
     end
 
     def present_negative
-      "#{to_あ}ない"
+      if code == "v5r-i"
+        "ない"
+      else
+        "#{to_あ}ない"
+      end
     end
 
     def present_negative_polite
@@ -23,7 +27,11 @@ module Katsuyou
     end
 
     def past_negative
-      "#{to_あ}なかった"
+      if code == "v5r-i"
+        "なかった"
+      else
+        "#{to_あ}なかった"
+      end
     end
 
     def past_negative_polite
@@ -39,7 +47,11 @@ module Katsuyou
     end
 
     def conjunctive_negative
-      "#{to_あ}なくて"
+      if code == "v5r-i"
+        "なくて"
+      else
+        "#{to_あ}なくて"
+      end
     end
 
     def conjunctive_negative_polite
@@ -51,7 +63,11 @@ module Katsuyou
     end
 
     def provisional_negative
-      "#{to_あ}なければ"
+      if code == "v5r-i"
+        "なければ"
+      else
+        "#{to_あ}なければ"
+      end
     end
 
     def volitional
@@ -247,7 +263,25 @@ module Katsuyou
         た: "た",
         て: "て"
       },
+      "v5u-s" => {
+        い: "い",
+        あ: "わ",
+        え: "え",
+        お: "お",
+        connector: "う",
+        た: "た",
+        て: "て"
+      },
       "v5r" => {
+        い: "り",
+        あ: "ら",
+        え: "れ",
+        お: "ろ",
+        connector: "っ",
+        た: "た",
+        て: "て"
+      },
+      "v5r-i" => {
         い: "り",
         あ: "ら",
         え: "れ",

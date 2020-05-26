@@ -29,14 +29,29 @@ module Katsuyou
     def test_guess_godan_verbs
       assert_equal "v5b", @subject.call(text: "飛ぶ", type: :godan_verb).code
       assert_equal "v5g", @subject.call(text: "泳ぐ", type: :godan_verb).code
-      assert_equal "v5k-s", @subject.call(text: "あの世に行く", type: :godan_verb).code
       assert_equal "v5k", @subject.call(text: "書く", type: :godan_verb).code
+      assert_equal "v5k-s", @subject.call(text: "あの世に行く", type: :godan_verb).code
+      assert_equal "v5k-s", @subject.call(text: "あの世にいく", type: :godan_verb).code
       assert_equal "v5m", @subject.call(text: "住む", type: :godan_verb).code
       assert_equal "v5n", @subject.call(text: "死ぬ", type: :godan_verb).code
       assert_equal "v5r", @subject.call(text: "走る", type: :godan_verb).code
+      assert_equal "v5r-i", @subject.call(text: "学がある", type: :godan_verb).code
+      assert_equal "v5r-i", @subject.call(text: "学が有る", type: :godan_verb).code
       assert_equal "v5s", @subject.call(text: "話す", type: :godan_verb).code
       assert_equal "v5t", @subject.call(text: "持つ", type: :godan_verb).code
       assert_equal "v5u", @subject.call(text: "買う", type: :godan_verb).code
+    end
+
+    def test_kuru_verb
+      result = @subject.call(text: "literally anything", type: :kuru_verb)
+
+      assert result
+      assert_equal DeterminesType.type_for("vk"), result
+    end
+
+    def test_suru_verb
+      assert_equal "vs", @subject.call(text: "勉強", type: :suru_verb).code
+      assert_equal "vs-i", @subject.call(text: "無理をする", type: :suru_verb).code
     end
   end
 end
